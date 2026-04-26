@@ -1,12 +1,12 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'RKCBD Restaurant | Authentic Bangladeshi Cuisine in Dhaka',
-  description: 'Order authentic Bangladeshi food online. Fresh halal ingredients, traditional recipes. Call 01046841561 for delivery.',
-  keywords: 'Bangladeshi restaurant, Halal food Dhaka, Biryani delivery, Bengali cuisine, Traditional food Bangladesh',
+  title: 'Korean Cosmetics BD | Authentic K-Beauty Products in Bangladesh',
+  description: 'Shop authentic Korean skincare & cosmetics. COSRX, Laneige, Innisfree, Some By Mi. 100% genuine K-beauty products directly from Korea.',
+  keywords: 'Korean cosmetics Bangladesh, K-beauty BD, COSRX Bangladesh, Laneige BD, Korean skincare, K-beauty products',
   openGraph: {
-    title: 'RKCBD Restaurant',
-    description: 'Authentic Bangladeshi cuisine with fresh halal ingredients',
+    title: 'Korean Cosmetics BD',
+    description: 'Authentic Korean beauty products in Bangladesh',
     type: 'website',
     locale: 'en_US',
   },
