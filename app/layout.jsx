@@ -1,12 +1,12 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Real Korean Cosmetic BD | Authentic K-Beauty in Bangladesh',
-  description: 'Shop authentic Korean skincare & cosmetics in Bangladesh. 100% genuine products sourced directly from Seoul. Fast delivery, bKash/Nagad accepted.',
-  keywords: 'Korean cosmetics Bangladesh, K-beauty BD, Korean skincare, COSRX Bangladesh, Innisfree Bangladesh',
+  title: 'RKCBD Restaurant | Authentic Bangladeshi Cuisine in Dhaka',
+  description: 'Order authentic Bangladeshi food online. Fresh halal ingredients, traditional recipes. Call 01046841561 for delivery.',
+  keywords: 'Bangladeshi restaurant, Halal food Dhaka, Biryani delivery, Bengali cuisine, Traditional food Bangladesh',
   openGraph: {
-    title: 'Real Korean Cosmetic BD',
-    description: 'Authentic Korean skincare & cosmetics in Bangladesh',
+    title: 'RKCBD Restaurant',
+    description: 'Authentic Bangladeshi cuisine with fresh halal ingredients',
     type: 'website',
     locale: 'en_US',
   },
@@ -17,8 +17,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#e91e8c" />
       </head>
       <body>
         {children}
