@@ -1,3 +1,5 @@
+import './globals.css';
+
 export const metadata = {
   title: 'Real Korean Cosmetic BD',
   description: 'Authentic Korean skincare & cosmetics in Bangladesh',
