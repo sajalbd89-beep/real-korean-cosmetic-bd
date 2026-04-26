@@ -35,7 +35,7 @@ function Navbar() {
         <nav>
           <Link href="/products">Shop</Link>
           <Link href="/cart">Cart</Link>
-          <Link href="/admin">Admin</Link>
+          Link href="/admin">Admin</Link>
           <button className="btn-primary">AI Skin Analysis</button>
         </nav>
       </div>
