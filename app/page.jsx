@@ -1,26 +1,27 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { getFeaturedProducts } from '../lib/supabase';
+import { useState } from 'react';
+
+// Demo Korean cosmetic products
+const demoProducts = [
+  { id: 1, name: 'COSRX Snail Mucin Essence', description: 'Hydrating essence with 96% snail mucin', price: 1850, image_url: 'https://placehold.co/300x300?text=COSRX+Snail' },
+  { id: 2, name: 'Laneige Water Sleeping Mask', description: 'Overnight hydration mask', price: 2200, image_url: 'https://placehold.co/300x300?text=Laneige+Mask' },
+  { id: 3, name: 'Innisfree Green Tea Serum', description: 'Antioxidant-rich hydrating serum', price: 1650, image_url: 'https://placehold.co/300x300?text=Innisfree+Serum' },
+  { id: 4, name: 'Some By Mi AHA BHA PHA Toner', description: 'Exfoliating miracle toner', price: 1950, image_url: 'https://placehold.co/300x300?text=Some+By+Mi' },
+  { id: 5, name: 'Etude House SoonJung Toner', description: 'pH 5.5 relief toner for sensitive skin', price: 1350, image_url: 'https://placehold.co/300x300?text=SoonJung' },
+  { id: 6, name: 'Missha Time Revolution Essence', description: 'First treatment essence', price: 2400, image_url: 'https://placehold.co/300x300?text=Missha+Essence' },
+  { id: 7, name: 'Dr. Jart+ Cicapair Cream', description: 'Centella calming cream', price: 2800, image_url: 'https://placehold.co/300x300?text=Dr+Jart' },
+  { id: 8, name: 'Klairs Vitamin C Serum', description: 'Brightening vitamin C serum', price: 1750, image_url: 'https://placehold.co/300x300?text=Klairs+Vit+C' },
+];
 
 export default function HomePage() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadProducts() {
-      const data = await getFeaturedProducts();
-      setProducts(data);
-      setLoading(false);
-    }
-    loadProducts();
-  }, []);
+  const [products] = useState(demoProducts);
 
   return (
     <>
       <Navbar />
       <Hero />
-      <FeaturedProducts products={products} loading={loading} />
+      <FeaturedProducts products={products} />
       <Features />
       <Footer />
     </>
@@ -53,27 +54,23 @@ function Hero() {
   );
 }
 
-function FeaturedProducts({ products, loading }) {
+function FeaturedProducts({ products }) {
   return (
     <div className="section">
       <h2 className="text-center">Best-selling Korean cosmetics</h2>
-      <p>Loved by our customers</p>
+      <p className="text-center">Loved by our customers</p>
       
-      {loading ? (
-        <div className="grid">Loading products...</div>
-      ) : (
-        <div className="grid">
-          {products.slice(0, 8).map((product) => (
-            <div key={product.id} className="card">
-              <img src={product.image_url || '/placeholder.jpg'} alt={product.name} />
-              <h3>{product.name}</h3>
-              <p className="description">{product.description}</p>
-              <p className="price">৳{product.price}</p>
-              <button className="btn-primary">Add to Cart</button>
-            </div>
-          ))}
-        </div>
-      )}
+      <div className="grid">
+        {products.map((product) => (
+          <div key={product.id} className="card">
+            <img src={product.image_url} alt={product.name} style={{width: '100%', borderRadius: '8px'}} />
+            <h3>{product.name}</h3>
+            <p className="description">{product.description}</p>
+            <p className="price">৳{product.price}</p>
+            <button className="btn-primary">Add to Cart</button>
+          </div>
+        ))}
+      </div>
       
       <div className="text-center" style={{ marginTop: '2rem' }}>
         <Link href="/products"><button className="btn-primary">View All Products</button></Link>
