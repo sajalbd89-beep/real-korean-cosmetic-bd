@@ -33,10 +33,9 @@ function Navbar() {
       <div className="container">
         <Link href="/" className="logo">RKCBD</Link>
         <nav>
-          <Link href="/products">Shop</Link>
+          <Link href="/products">Menu</Link>
           <Link href="/cart">Cart</Link>
-          Link href="/admin">Admin</Link>
-          <button className="btn-primary">AI Skin Analysis</button>
+          <Link href="/admin">Admin</Link>
         </nav>
       </div>
     </div>
@@ -46,10 +45,10 @@ function Navbar() {
 function Hero() {
   return (
     <div className="hero">
-      <h1>Authentic Korean Beauty</h1>
-      <p>100% genuine K-beauty products sourced directly from Seoul. Transform your skincare routine with Korea's finest.</p>
-      <Link href="/products"><button className="btn-primary" style={{ marginRight: '1rem' }}>Shop Now</button></Link>
-      <button className="btn-secondary">Try AI Skin Doctor</button>
+      <h1>Authentic Bangladeshi Restaurant</h1>
+      <p>Experience the finest traditional Bangladeshi cuisine with fresh, halal ingredients. Order now and enjoy!</p>
+      <Link href="/products"><button className="btn-primary" style={{ marginRight: '1rem' }}>Order Now</button></Link>
+      <button className="btn-secondary">Try AI Menu Assistant</button>
     </div>
   );
 }
@@ -57,95 +56,55 @@ function Hero() {
 function FeaturedProducts({ products, loading }) {
   return (
     <div className="section">
-      <div className="container">
-        <div className="section-header">
-          <h2>Featured Products</h2>
-          <p>Best-selling Korean cosmetics loved by our customers</p>
+      <h2 className="text-center">Popular Menu Items</h2>
+      <p>Best-selling Bangladeshi dishes loved by our customers</p>
+      
+      {loading ? (
+        <div className="grid">Loading menu...</div>
+      ) : (
+        <div className="grid">
+          {products.slice(0, 8).map((product) => (
+            <div key={product.id} className="card">
+              <img src={product.image_url || '/placeholder.jpg'} alt={product.name} />
+              <h3>{product.name}</h3>
+              <p className="description">{product.description}</p>
+              <p className="price">৳{product.price}</p>
+              <button className="btn-primary">Add to Cart</button>
+            </div>
+          ))}
         </div>
-        {loading ? (
-          <div style={{ textAlign: 'center', padding: '4rem' }}>Loading...</div>
-        ) : products.length === 0 ? (
-          <DemoProducts />
-        ) : (
-          <div className="product-grid">
-            {products.map(p => (
-              <Link key={p.id} href={`/products/${p.id}`}>
-                <div className="product-card">
-                  <img src={p.image_url || '/placeholder.jpg'} alt={p.name} />
-                  <div className="product-card-body">
-                    {p.featured && <span className="badge">Featured</span>}
-                    <h3>{p.name}</h3>
-                    <p style={{ fontSize: '0.875rem', color: 'var(--gray)' }}>{p.category}</p>
-                    <div className="price">
-                      ৳{p.price}
-                      {p.compare_price > p.price && <span className="old-price">৳{p.compare_price}</span>}
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
-        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-          <Link href="/products"><button className="btn-secondary">View All Products</button></Link>
-        </div>
+      )}
+      
+      <div className="text-center" style={{ marginTop: '2rem' }}>
+        <Link href="/products"><button className="btn-primary">View Full Menu</button></Link>
       </div>
-    </div>
-  );
-}
-
-function DemoProducts() {
-  const demo = [
-    { id: 1, name: 'COSRX Snail Mucin Essence', category: 'Serum', price: 1850, image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400' },
-    { id: 2, name: 'Innisfree Green Tea Toner', category: 'Toner', price: 1450, image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400' },
-    { id: 3, name: 'Laneige Water Sleeping Mask', category: 'Mask', price: 2200, compare: 2600, image: 'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=400' },
-    { id: 4, name: 'Etude House SoonJung pH Cleanser', category: 'Cleanser', price: 1350, image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400' },
-  ];
-  return (
-    <div className="product-grid">
-      {demo.map(p => (
-        <div key={p.id} className="product-card">
-          <img src={p.image} alt={p.name} />
-          <div className="product-card-body">
-            <span className="badge">Featured</span>
-            <h3>{p.name}</h3>
-            <p style={{ fontSize: '0.875rem', color: 'var(--gray)' }}>{p.category}</p>
-            <div className="price">৳{p.price}</div>
-          </div>
-        </div>
-      ))}
     </div>
   );
 }
 
 function Features() {
   return (
-    <div className="section" style={{ background: 'var(--light-bg)' }}>
+    <div className="features">
       <div className="container">
-        <div className="section-header">
-          <h2>Why Choose Us?</h2>
+        <div className="feature">
+          <h3>🍛</h3>
+          <h4>Authentic Recipes</h4>
+          <p>Traditional Bangladeshi cooking methods</p>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '3rem' }}>✓</div>
-            <h3>100% Authentic</h3>
-            <p>Directly sourced from certified Seoul distributors</p>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '3rem' }}>🚚</div>
-            <h3>Fast Delivery</h3>
-            <p>Delivery all over Bangladesh within 2-5 days</p>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '3rem' }}>💳</div>
-            <h3>Easy Payment</h3>
-            <p>bKash, Nagad, Cash on Delivery accepted</p>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '3rem' }}>🤖</div>
-            <h3>AI Skin Doctor</h3>
-            <p>Free AI-powered skin analysis & recommendations</p>
-          </div>
+        <div className="feature">
+          <h3>🥩</h3>
+          <h4>Halal Certified</h4>
+          <p>100% halal meat and ingredients</p>
+        </div>
+        <div className="feature">
+          <h3>🚚</h3>
+          <h4>Fast Delivery</h4>
+          <p>Hot food delivered to your door</p>
+        </div>
+        <div className="feature">
+          <h3>📞</h3>
+          <h4>Easy Ordering</h4>
+          <p>Call 01046841561 or order online</p>
         </div>
       </div>
     </div>
@@ -154,28 +113,28 @@ function Features() {
 
 function Footer() {
   return (
-    <div className="footer">
+    <footer>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
-          <div>
-            <h4>Real Korean Cosmetic BD</h4>
-            <p>Bringing authentic Korean beauty to Bangladesh since 2024.</p>
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>RKCBD Restaurant</h3>
+            <p>Serving authentic Bangladeshi food in Dhaka since 2024. Halal certified.</p>
           </div>
-          <div>
+          <div className="footer-section">
             <h4>Quick Links</h4>
-            <p><Link href="/products">Shop</Link></p>
-            <p><Link href="/admin">Admin</Link></p>
+            <Link href="/products">Menu</Link>
+            <Link href="/about">About Us</Link>
+            <Link href="/contact">Contact</Link>
           </div>
-          <div>
+          <div className="footer-section">
             <h4>Contact</h4>
-            <p>WhatsApp: 01700-000000</p>
+            <p>Phone: 01046841561</p>
             <p>Email: info@rkcbd.com</p>
+            <p>Dhaka, Bangladesh</p>
           </div>
         </div>
-        <div style={{ borderTop: '1px solid #374151', paddingTop: '1rem', textAlign: 'center' }}>
-          <p>© 2026 Real Korean Cosmetic BD. All rights reserved.</p>
-        </div>
+        <p className="text-center" style={{ marginTop: '2rem' }}>© 2025 RKCBD Restaurant · All products are halal certified</p>
       </div>
-    </div>
+    </footer>
   );
 }
